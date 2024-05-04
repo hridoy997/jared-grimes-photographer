@@ -9,6 +9,7 @@ import NotFound from './Pages/Shared/NotFound/NotFound';
 import Home from './Pages/Home/Home/Home';
 import Services from './Pages/Home/Services/Services';
 import Blogs from './Pages/Blogs/Blogs';
+import Gallery from './Pages/Gallery/Gallery';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/home' element={<Home/>}/>
         <Route path='/services' element={<Services/>}/>
+        <Route path='/gallery' element={<Gallery/>}/>
         <Route path='/blogs' element={<Blogs/>}/>
         <Route path='/about' element={<About/>}/>
         <Route path='/login' element={<Login/>}/>

@@ -1,0 +1,30 @@
+.services {
+    
+}
+.services .servise {
+    display: flex;
+}
+
+.servise img{
+    border-radius: 10px;
+}
+
+
+@media screen and (max-width: 576px) {
+    .services .servise {
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 577px) and (max-width: 1200px) {
+    .services .servise {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .services .servise {
+        flex-direction: row;
+    }
+    }
