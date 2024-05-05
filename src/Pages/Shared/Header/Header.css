@@ -1,3 +1,6 @@
-.header {
-    /* background-color: dimgray; */
+nav div a:hover {
+    opacity: 1.5;
+}
+nav div a img:hover {
+    opacity: 0.5;
 }

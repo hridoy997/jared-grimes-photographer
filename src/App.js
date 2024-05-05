@@ -9,15 +9,15 @@ import NotFound from './Pages/Shared/NotFound/NotFound';
 import Home from './Pages/Home/Home/Home';
 import Services from './Pages/Home/Services/Services';
 import Blogs from './Pages/Blogs/Blogs';
-import Gallery from './Pages/Gallery/Gallery';
 import Checkout from './Pages/Checkout/Checkout';
 import ServiceDetail from './Pages/ServiceDetail/ServiceDetail';
 import OrderSuccessful from './Pages/Checkout/OrderSuccessful ';
+import Gallery from './Pages/Gallerys/Gallery/Gallery';
+
 
 
 function App() {
   return (
-    // <div className="App bg-secondary">
     <div className="App">
       <Header></Header>
       <Routes>
