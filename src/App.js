@@ -10,6 +10,9 @@ import Home from './Pages/Home/Home/Home';
 import Services from './Pages/Home/Services/Services';
 import Blogs from './Pages/Blogs/Blogs';
 import Gallery from './Pages/Gallery/Gallery';
+import Checkout from './Pages/Checkout/Checkout';
+import ServiceDetail from './Pages/ServiceDetail/ServiceDetail';
+import OrderSuccessful from './Pages/Checkout/OrderSuccessful ';
 
 
 function App() {
@@ -21,6 +24,9 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/home' element={<Home/>}/>
         <Route path='/services' element={<Services/>}/>
+        <Route path='/service/:serviceId' element={<ServiceDetail/>}/>
+        <Route path='/checkout' element={<Checkout/>}/>
+        <Route path='/orderSuccessful' element={<OrderSuccessful/>}/>
         <Route path='/gallery' element={<Gallery/>}/>
         <Route path='/blogs' element={<Blogs/>}/>
         <Route path='/about' element={<About/>}/>
