@@ -44,7 +44,7 @@ const Header = () => {
                         <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
                         {
                             user ? 
-                            <Nav.Link eventKey={2} as={Link} onClick={handleSignOut}>Sign in</Nav.Link>
+                            <Nav.Link eventKey={2} as={Link} onClick={handleSignOut}>Logout</Nav.Link>
                             :
                             <Nav.Link eventKey={2} as={Link} to="/login">Login</Nav.Link>
                         }
