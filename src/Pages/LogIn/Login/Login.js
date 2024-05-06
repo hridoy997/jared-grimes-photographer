@@ -1,14 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import {  useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+
 
   const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const navigate = useNavigate();
     let location = useLocation();
+    let errorElement;
 
     let from = location.state?.from?.pathname || "/";
 
@@ -19,6 +21,10 @@ import auth from '../../../firebase.init';
       error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(
+      auth
+    );
+
     // if(user){
     //   navigate(from, { replace: true });
     // }
@@ -28,6 +34,8 @@ import auth from '../../../firebase.init';
         navigate(from, { replace: true });
       }
     }, [user, navigate, from]);
+
+    
 
       const handleSubmit = event => {
       event.preventDefault();
@@ -44,6 +52,11 @@ import auth from '../../../firebase.init';
       }
 
       const resetPassword = async () => {
+        const email = emailRef.current.value;
+        const success = await sendPasswordResetEmail( email );
+        if (success) {
+          alert('Sent email');
+        }
         
       }
 
@@ -65,7 +78,8 @@ import auth from '../../../firebase.init';
 
                 <button type="submit" className="btn btn-primary">Login</button>
               </form>
-              <p>Forget Password? <button className='btn btn-link text-primary pe-auto text-decoration-none' onClick={resetPassword}>Reset Password</button> </p>
+              {errorElement}
+              <p>Forget Password? <button className='btn btn-link text-primary pe-auto text-decoration-none' onClick={()=>resetPassword()}>Reset Password</button> </p>
                 
               <p>New to jared grimes photographer? <Link to="/register" className='text-primary pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</Link> </p>
               <SocialLogin/>

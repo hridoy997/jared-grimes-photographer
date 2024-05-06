@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 
 const Register = () => {
 
     const navigate = useNavigate();
+    
+    let errorElement;
+
     const [
         createUserWithEmailAndPassword,
         user,
@@ -14,6 +17,8 @@ const Register = () => {
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
       const [updateProfile, updating, error1] = useUpdateProfile(auth);
+      
+      const [sendEmailVerification, sending, error2] = useSendEmailVerification(auth);
 
 
     const navigateLogin = () => {
@@ -29,6 +34,11 @@ const Register = () => {
         
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
+        
+        const success = await sendEmailVerification();
+            if (success) {
+              alert('Sent email');
+            }
         navigate('/home');
         
     };
@@ -59,6 +69,7 @@ const Register = () => {
                 </div> */}
                 <button type="submit" className="btn btn-primary">Register</button>
                 </form>
+                {errorElement}
                 <p>Already have an account? <Link to="/login" className='text-primary pe-auto text-decoration-none' onClick={navigateLogin}>Please Login</Link> </p>
                 <SocialLogin/>
             </div>
